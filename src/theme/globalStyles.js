@@ -16,4 +16,8 @@ export const GlobalStyles = createGlobalStyle`
       background-color: #051d4d;
   }
 
+  input {
+      color: black;
+  }
+
 `;

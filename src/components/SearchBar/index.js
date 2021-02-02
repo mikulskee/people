@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { StyledSearchBar } from './SearchBar.Styled';
 
 const SearchBar = (props) => {
 	const { originalUsersList, setUsersList } = props;
@@ -6,16 +7,22 @@ const SearchBar = (props) => {
 	const [inputValue, setInputValue] = useState('');
 
 	const onSearchBarChange = (e) => {
-		const text = e.target.value.toLowerCase();
+		const text = e.target.value;
 
-		const list = originalUsersList.filter((user) => user.name.toLowerCase().indexOf(text) >= 0);
+		const list = originalUsersList.filter(
+			(user) => user.name.toLowerCase().indexOf(text.toLowerCase()) >= 0
+		);
 
 		setUsersList(list);
 
 		setInputValue(text);
 	};
 	return (
-		<input value={inputValue} onChange={onSearchBarChange} placeholder="Search user by name" />
+		<StyledSearchBar
+			value={inputValue}
+			onChange={onSearchBarChange}
+			placeholder="Search user by name"
+		/>
 	);
 };
 

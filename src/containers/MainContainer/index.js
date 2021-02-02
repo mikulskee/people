@@ -3,6 +3,7 @@ import { AppTitle } from '../../components/AppTitle';
 import SearchBar from '../../components/SearchBar';
 import UserList from '../../components/UserList';
 import { MainContainerWrapper } from './MainContainer.Styles';
+import Loader from '../../components/Loader';
 
 const MainContainer = () => {
 	const [originalUsersList, setOriginalUsersList] = useState([]);
@@ -12,16 +13,25 @@ const MainContainer = () => {
 		fetch('https://jsonplaceholder.typicode.com/users')
 			.then((response) => response.json())
 			.then((json) => {
-				setUsersList(json);
-				setOriginalUsersList(json);
+				setTimeout(() => {
+					setUsersList(json);
+					setOriginalUsersList(json);
+				}, 300);
 			})
 			.catch((error) => setFetchUsersError(error));
 	}, []);
 	return (
 		<MainContainerWrapper>
 			<AppTitle>Users List</AppTitle>
-			<SearchBar originalUsersList={originalUsersList} setUsersList={setUsersList} />
-			<UserList usersList={usersList} />
+
+			{usersList.length ? (
+				<>
+					<SearchBar originalUsersList={originalUsersList} setUsersList={setUsersList} />
+					<UserList usersList={usersList} />
+				</>
+			) : (
+				<Loader />
+			)}
 		</MainContainerWrapper>
 	);
 };

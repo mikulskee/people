@@ -34,6 +34,7 @@ export const UserCardWrapper = styled.li`
 		margin-top: 5px;
 		border-radius: 4px;
 		display: flex;
+		transition: opacity 0.25s linear;
 
 		svg {
 			width: 20px;

@@ -6,12 +6,18 @@ import { UserListWrapper } from './UserList.Styled';
 const UserList = (props) => {
 	const { usersList } = props;
 
+	const handleAccordionChange = () => {
+		document.querySelectorAll('.company').forEach((item) => (item.style.opacity = 0));
+		document
+			.querySelectorAll('.company')
+			.forEach((item) => setTimeout(() => (item.style.opacity = 1), 100));
+	};
 	return (
 		<UserListWrapper>
-			<Accordion allowZeroExpanded>
+			<Accordion allowZeroExpanded onChange={handleAccordionChange}>
 				{usersList.map((user) => (
-					<AccordionItem>
-						<UserCard key={user.id} user={user} />
+					<AccordionItem key={user.id}>
+						<UserCard user={user} />
 					</AccordionItem>
 				))}
 			</Accordion>

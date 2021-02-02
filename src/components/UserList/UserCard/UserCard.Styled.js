@@ -10,7 +10,7 @@ export const UserCardWrapper = styled.li`
 		font-weight: 600;
 		font-size: 20px;
 		cursor: pointer;
-		transition: opacity 0.25s linear;
+		transition: opacity 0.15s linear;
 		&:hover {
 			opacity: 0.7;
 		}

@@ -5,11 +5,11 @@ const UserList = (props) => {
 	const { usersList } = props;
 
 	return (
-		<ul>
+		<ol>
 			{usersList.map((user) => (
 				<UserCard key={user.id} user={user} />
 			))}
-		</ul>
+		</ol>
 	);
 };
 

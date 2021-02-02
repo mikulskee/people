@@ -1,12 +1,15 @@
 import React from 'react';
+import { UserCardWrapper } from './UserCard.Styled';
 
 const UserCard = (props) => {
 	const { user } = props;
 	return (
-		<li>
-			<p>{user.name}</p>
-			<p>{user.company.catchPhrase}</p>
-		</li>
+		<UserCardWrapper>
+			<p className="user-name">
+				{user.name} <span>@{user.username}</span>
+			</p>
+			<p className="user-catchphrase">{user.company.catchPhrase}</p>
+		</UserCardWrapper>
 	);
 };
 

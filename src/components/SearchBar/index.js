@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyledSearchBar } from './SearchBar.Styled';
 
 const SearchBar = (props) => {
-	const { originalUsersList, setUsersList } = props;
+	const { originalUsersList, setUsersList, usersList } = props;
 
 	const [inputValue, setInputValue] = useState('');
 
@@ -18,11 +18,18 @@ const SearchBar = (props) => {
 		setInputValue(text);
 	};
 	return (
-		<StyledSearchBar
-			value={inputValue}
-			onChange={onSearchBarChange}
-			placeholder="Search user by name"
-		/>
+		<>
+			<StyledSearchBar
+				value={inputValue}
+				onChange={onSearchBarChange}
+				placeholder="Search user by name"
+			/>
+			<>
+				{!usersList.length ? (
+					<p style={{ marginTop: '40px' }}>Sorry, no results found for "{inputValue}"</p>
+				) : null}
+			</>
+		</>
 	);
 };
 

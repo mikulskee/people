@@ -24,13 +24,23 @@ const MainContainer = () => {
 		<MainContainerWrapper>
 			<AppTitle>Users List</AppTitle>
 
-			{usersList.length ? (
-				<>
-					<SearchBar originalUsersList={originalUsersList} setUsersList={setUsersList} />
-					<UserList usersList={usersList} />
-				</>
+			{fetchUsersError ? (
+				<p>Sorry, something went wrong...</p>
 			) : (
-				<Loader />
+				<>
+					{originalUsersList.length ? (
+						<>
+							<SearchBar
+								originalUsersList={originalUsersList}
+								setUsersList={setUsersList}
+								usersList={usersList}
+							/>
+							{usersList.length ? <UserList usersList={usersList} /> : null}
+						</>
+					) : (
+						<Loader />
+					)}
+				</>
 			)}
 		</MainContainerWrapper>
 	);
